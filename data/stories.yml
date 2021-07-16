@@ -1,0 +1,74 @@
+version: "2.0"
+
+stories:
+
+#- story: happy path
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: mood_great
+#  - action: utter_happy
+#
+#- story: sad path 1
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: mood_unhappy
+#  - action: utter_cheer_up
+#  - action: utter_did_that_help
+#  - intent: affirm
+#  - action: utter_happy
+#
+#- story: sad path 2
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: mood_unhappy
+#  - action: utter_cheer_up
+#  - action: utter_did_that_help
+#  - intent: deny
+#  - action: utter_goodbye
+
+
+- story: wen zhen
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: symptom
+  - action: utter_symptom
+  - intent: complication
+  - action: utter_complication
+
+- story: ask_weather
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: weather
+      entities:
+        - city: 北京
+        - date_time: 今天
+    - slot_was_set:
+        - city: 北京
+    - slot_was_set:
+        - date_time: 今天
+    - action: weather_form
+    - active_loop: form_weather # 表单激活
+    - slot_was_set:
+        - city: 北京
+    - slot_was_set:
+        - date_time: 今天
+    - active_loop: null
+    - action: action_submit_weather_form
+
+- story: kg path
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: symptom
+      entities:
+        - disease: 高血压
+    - action: ask_symptom_action
+    - intent: complication
+    - action: ask_complication_action
+    - intent: common_drug
+    - action: ask_drug_action

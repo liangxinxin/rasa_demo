@@ -1,0 +1,97 @@
+version: "2.0"
+
+intents:
+  #  - greet
+  #  - goodbye
+  #  - affirm
+  #  - deny
+  #  - mood_great
+  #  - mood_unhappy
+  #  - bot_challenge
+  - greet
+  - goodbye
+  - symptom
+  - complication
+  - weather
+  - common_drug
+
+entities:
+  - city
+  - date_time
+  - disease
+
+slots:
+  city:
+    type: text
+    auto_fill: true
+  date_time:
+    type: text
+    auto_fill: true
+  disease:
+    type: text
+    auto_fill: true
+
+responses:
+  #  utter_greet:
+  #  - text: "Hey! How are you?"
+  #  - text: "你好，请问您有什么问题"
+
+  #  utter_cheer_up:
+  #  - text: "Here is something to cheer you up:"
+  #    image: "https://i.imgur.com/nGF1K8f.jpg"
+  #
+  #  utter_did_that_help:
+  #  - text: "Did that help you?"
+  #
+  #  utter_happy:
+  #  - text: "Great, carry on!"
+  #
+  #  utter_goodbye:
+  #  - text: "Bye"
+  #
+  #  utter_iamabot:
+  #  - text: "I am a bot, powered by Rasa."
+  utter_goodbye:
+    - text: "Bye"
+  utter_greet:
+    - text: "你好，请问您有什么问题"
+
+  utter_symptom:
+    - text: "你好，糖尿病的症状是 多饮、多尿、多食，体重减少"
+  utter_complication:
+    - text: "你好，糖尿病的并发症是 糖尿病足、脑动脉硬化、缺血性脑血管病、脑出血、脑萎缩"
+  utter_happy:
+    - text: "Great, carry on!"
+  utter_ask_city:
+    - text: "您要查询哪里的天气"
+    - text: "查询城市"
+    - text: "查哪个城市的天气？"
+  utter_ask_date:
+    - text: "您要查询哪天的天气"
+    - text: "查询哪天的天气"
+
+actions:
+  - action_submit_weather_form
+  - ask_symptom_action
+  - ask_drug_action
+  - ask_complication_action
+
+forms:
+  weather_form:
+    required_slots:
+      city:
+        - type: from_entity
+          entity: city
+      date_time:
+        - type: from_entity
+          entity: date_time
+  drug_form:
+    required_slots:
+      disease:
+        - type: from_entity
+          entity: disease
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
