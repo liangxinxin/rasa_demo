@@ -1,0 +1,125 @@
+{
+    "restaurant": [
+        {
+            "id": 0,
+            "name": "海底捞",
+            "cuisine": "火锅",
+            "outside-seating": true,
+            "price-range": "中等"
+        },
+        {
+            "id": 1,
+            "name": "太熟悉",
+            "cuisine": "北京菜",
+            "outside-seating": false,
+            "price-range": "便宜"
+        },
+        {
+            "id": 2,
+            "name": "局气",
+            "cuisine": "北京菜",
+            "outside-seating": true,
+            "price-range": "中等"
+        },
+        {
+            "id": 3,
+            "name": "沙县",
+            "cuisine": "小吃",
+            "outside-seating": true,
+            "price-range": "便宜"
+        },
+        {
+            "id": 4,
+            "name": "海碗居",
+            "cuisine": "北京菜",
+            "outside-seating": true,
+            "price-range": "中等"
+        },
+        {
+            "id": 5,
+            "name": "云海肴",
+            "cuisine": "云南菜",
+            "outside-seating": false,
+            "price-range": "便宜"
+        },
+        {
+            "id": 6,
+            "name": "将太无二",
+            "cuisine": "日本菜",
+            "outside-seating": true,
+            "price-range": "便宜"
+        }
+    ],
+    "hotel": [
+        {
+            "id": 0,
+            "name":"汉庭",
+            "price-range": "贵",
+            "breakfast-included": true,
+            "city": "北京",
+            "free-wifi": true,
+            "star-rating": 5,
+            "swimming-pool": true
+        },
+        {
+            "id": 1,
+            "name": "全季",
+            "price-range": "贵",
+            "breakfast-included": true,
+            "city": "北京",
+            "free-wifi": true,
+            "star-rating": 4,
+            "swimming-pool": false
+        },
+        {
+            "id": 2,
+            "name": "七修酒店",
+            "price-range": "中等",
+            "breakfast-included": false,
+            "city": "廊坊",
+            "free-wifi": false,
+            "star-rating": 1,
+            "swimming-pool": false
+        },
+        {
+            "id": 3,
+            "name": "如家",
+            "price-range": "便宜",
+            "breakfast-included": false,
+            "city": "北京",
+            "free-wifi": true,
+            "star-rating": 2,
+            "swimming-pool": false
+        },
+        {
+            "id": 4,
+            "name": "北京宾馆",
+            "price-range": "贵",
+            "breakfast-included": true,
+            "city": "北京",
+            "free-wifi": true,
+            "star-rating": 3,
+            "swimming-pool": false
+        },
+        {
+            "id": 5,
+            "name": "国贸宾馆",
+            "price-range": "便宜",
+            "breakfast-included": true,
+            "city": "北京",
+            "free-wifi": false,
+            "star-rating": 2,
+            "swimming-pool": false
+        },
+        {
+            "id": 6,
+            "name": "索菲特",
+            "price-range": "中等",
+            "breakfast-included": true,
+            "city": "北京",
+            "free-wifi": true,
+            "star-rating": 3,
+            "swimming-pool": true
+        }
+    ]
+}

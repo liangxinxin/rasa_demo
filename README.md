@@ -33,3 +33,15 @@ LanguageModelTokenizer 不支持中文  ==>JiebaTokenizer
 python3 -m rasa interactive -m models/20201127-144757.tar.gz --endpoints endpoints.yml --config config.yml
 ```
 
+```
+任务一：天气助手
+1.nlu 中定义好 intent examples,具体见文件
+2.domain文件： 中定义好intents,entities,slots,responses 中utter_ask_city，utter_ask_date_time :ask后面的词语solt里面的名称对应
+    forms 中定义表单，必须的槽位值
+3.stories文件中：定义故事,激活表单，会自动进入表单检查槽位是否被填充，如果没有，会发出utter_ask_city 或 utter_ask_date_time消息
+任务二：问诊助手
+```
+```
+stories 可视化
+rasa visualize
+```

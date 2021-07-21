@@ -29,20 +29,8 @@ stories:
 #  - intent: deny
 #  - action: utter_goodbye
 
-
-- story: wen zhen
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: symptom
-  - action: utter_symptom
-  - intent: complication
-  - action: utter_complication
-
 - story: ask_weather
   steps:
-    - intent: greet
-    - action: utter_greet
     - intent: weather
       entities:
         - city: 北京
@@ -52,23 +40,109 @@ stories:
     - slot_was_set:
         - date_time: 今天
     - action: weather_form
-    - active_loop: form_weather # 表单激活
+    - active_loop: weather_form # 表单激活
     - slot_was_set:
         - city: 北京
     - slot_was_set:
         - date_time: 今天
-    - active_loop: null
+    - active_loop: null # 表单失活
     - action: action_submit_weather_form
 
-- story: kg path
+
+- story: ask_weather_with_greet
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: weather
+      entities:
+        - city: 北京
+        - date_time: 今天
+#    - slot_was_set: #https://www.cnblogs.com/WillingCPP/p/14657909.html
+#        - city: 北京
+#    - slot_was_set:
+#        - date_time: 今天
+    - action: weather_form
+    - active_loop: weather_form # 表单激活
+#我们在domain form中设置了自动填充，这里可以省略slot_was_set。 slot_was_set意义是 NLU中包含了一个实体，与solt同名，会自动设置
+#    - slot_was_set:
+#        - city: 北京
+#    - slot_was_set:
+#        - date_time: 今天
+    - active_loop: null # 表单失活
+    - action: action_submit_weather_form
+
+
+- story: kg symptom path
   steps:
     - intent: greet
     - action: utter_greet
     - intent: symptom
       entities:
         - disease: 高血压
-    - action: ask_symptom_action
+    - action: disease_form
+    - active_loop: disease_form
+    - slot_was_set:
+        - disease: 高血压
+    - active_loop: null
+    - action: action_kbqa_submit_symptom
+
+- story: kg complication path
+  steps:
     - intent: complication
-    - action: ask_complication_action
+      entities: # 引入实体很重要，用来预测下一个行为的策略是基于意图和实体的组合。
+        - disease: 高血压
+    - action: disease_form
+    - active_loop: disease_form
+    - slot_was_set:
+        - disease: 高血压
+    - active_loop: null
+    - action: action_kbqa_submit_complication
+
+- story: kg common_drug path
+  steps:
     - intent: common_drug
-    - action: ask_drug_action
+      entities:
+        - disease: 高血压
+    - action: disease_form
+    - active_loop: disease_form
+    - slot_was_set:
+        - disease: 高血压
+    - active_loop: null
+    - action: action_kbqa_submit_drug
+
+- story: kg check path
+  steps:
+    - intent: check
+      entities:
+        - disease: 高血压
+    - action: disease_form
+    - active_loop: disease_form
+    - slot_was_set:
+        - disease: 高血压
+    - active_loop: null
+    - action: action_kbqa_submit_check
+
+- story: kg cause path
+  steps:
+    - intent: cause
+      entities:
+        - disease: 高血压
+    - action: disease_form
+    - active_loop: disease_form
+    - slot_was_set:
+        - disease: 高血压
+    - active_loop: null
+    - action: action_kbqa_submit_cause
+
+- story: knowledge base happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: query_knowledge_base
+  - action: action_query_knowledge_base
+  - intent: goodbye
+  - action: utter_goodbye
+
+
+# 用户的响应 1.utter_**,2.dispatcher: dispatch.utter_message(template="utter_greet")
+# Variables:使用对话中收集的信息，填充到模板中的变量。"Hey, {name}. How are you?"

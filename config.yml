@@ -28,7 +28,7 @@ pipeline:
 #    model_weights: "/Users/liangxinxin/Downloads/bert/"
 #    model_name: bert
   - name: JiebaTokenizer
-  - name: LanguageModelFeaturizer
+  - name: LanguageModelFeaturizer #HFTransformersNLP，里面主要包含一些BERT，GTP等比较新的Transformer模型，现在已经在LanguageModelFeaturizer中实现了，不在需要在pipeline里面配置HFTransformersNLP语言模型。
     model_weights: "/Users/liangxinxin/Downloads/bert/"
     model_name: bert
   - name: DIETClassifier # Dual Intent and Entity Transformer的简称, 解决了对话理解问题中的2个问题，意图分类和实体识别。

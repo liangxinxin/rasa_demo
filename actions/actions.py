@@ -12,7 +12,6 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from api.weather import Weather
-from knowledge_base.neo4j import Neo4jGraphDatabase
 from rasa_sdk.events import AllSlotsReset
 from rasa_sdk.knowledge_base.actions import ActionQueryKnowledgeBase
 
@@ -43,52 +42,9 @@ class WeatherForm(Action):
         city = slots.get("city")
         date_time = slots.get("date_time")
         text = Weather()(city, date_time)
-
         dispatcher.utter_message(text)
-
-        return [AllSlotsReset]  # 设置此次对话结
-
-
-class AskSymptomAction(ActionQueryKnowledgeBase):
-
-    def name(self) -> Text:
-        return "ask_symptom_action"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: "DomainDict"):
-        slots = tracker.current_slot_values()
-        disease = slots.get('disease')
-        text = Neo4jGraphDatabase.query_symptom(disease)
-        dispatcher.utter_message(text)
-        return [AllSlotsReset]  # 设置此次对话结
+        return [AllSlotsReset()]  # 设置此次对话结
 
 
-class AskDrugAction(ActionQueryKnowledgeBase):
 
-    def name(self) -> Text:
-        return "ask_drug_action"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: "DomainDict"):
-        slots = tracker.current_slot_values()
-        disease = slots.get('disease')
-        text = Neo4jGraphDatabase.query_drug(disease)
-        dispatcher.utter_message(text)
-        return [AllSlotsReset]  # 设置此次对话结
-
-
-class AskComplicationAction(ActionQueryKnowledgeBase):
-
-    def name(self) -> Text:
-        return "ask_complication_action"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: "DomainDict"):
-        slots = tracker.current_slot_values()
-        disease = slots.get('disease')
-        text = Neo4jGraphDatabase.query_complication(disease)
-        dispatcher.utter_message(text)
-        return [AllSlotsReset]  # 设置此次对话结
+# text:是文本类型的

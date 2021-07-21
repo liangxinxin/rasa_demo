@@ -12,6 +12,8 @@ from pypinyin import lazy_pinyin
 from xml.etree import ElementTree as ET
 import json
 import os
+from knowledge_base.neo4j import  Neo4j
+neo4j = Neo4j()
 
 
 

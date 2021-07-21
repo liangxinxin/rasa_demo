@@ -14,12 +14,17 @@ intents:
   - complication
   - weather
   - common_drug
+  - cure
+  - cause
+  - check
 
 entities:
   - city
   - date_time
   - disease
-
+  - object_type
+  - mention
+  - attribute
 slots:
   city:
     type: text
@@ -30,6 +35,12 @@ slots:
   disease:
     type: text
     auto_fill: true
+  object_type:
+    type: unfeaturized
+  mention:
+    type: unfeaturized
+  attribute:
+    type: unfeaturized
 
 responses:
   #  utter_greet:
@@ -51,41 +62,52 @@ responses:
   #
   #  utter_iamabot:
   #  - text: "I am a bot, powered by Rasa."
+  # utter_为前缀的模板 可以直接作为action
   utter_goodbye:
     - text: "Bye"
   utter_greet:
     - text: "你好，请问您有什么问题"
 
   utter_symptom:
-    - text: "你好，糖尿病的症状是 多饮、多尿、多食，体重减少"
+    - text: "你好，{disease}的症状是{symptoms}"
   utter_complication:
     - text: "你好，糖尿病的并发症是 糖尿病足、脑动脉硬化、缺血性脑血管病、脑出血、脑萎缩"
+  utter_drug:
+    - text: "{disease}的常用药品{drugs}"
   utter_happy:
     - text: "Great, carry on!"
   utter_ask_city:
     - text: "您要查询哪里的天气"
     - text: "查询城市"
     - text: "查哪个城市的天气？"
-  utter_ask_date:
+  utter_ask_date_time: #随机改变发送给用户的响应，则可以列出多个响应，Rasa会随机选择其中一个
     - text: "您要查询哪天的天气"
     - text: "查询哪天的天气"
+  utter_not_find:
+    - text: "这个问题我暂时还没查找哦"
 
-actions:
+actions: #命名规则，最好以action_开头。
   - action_submit_weather_form
-  - ask_symptom_action
-  - ask_drug_action
-  - ask_complication_action
+  - action_kbqa_submit_symptom
+  - action_kbqa_submit_drug
+  - action_kbqa_submit_check
+  - action_kbqa_submit_cause
+
+  - action_kbqa_submit_complication
+  - action_query_knowledge_base
 
 forms:
+  # 是一个特殊自定义的action,有一个循环逻辑，一直询问客户需要的slot
   weather_form:
-    required_slots:
+    required_slots: # 自动循环 required_slots, 自动匹配utter_ask_+ 意图。
       city:
         - type: from_entity
           entity: city
+          influence_conversation: true #是否设置slot，影响下一个action，“天气怎么样？（继续询问）”“纽约的天气怎么样？(去预测)
       date_time:
         - type: from_entity
           entity: date_time
-  drug_form:
+  disease_form:
     required_slots:
       disease:
         - type: from_entity
@@ -95,3 +117,5 @@ forms:
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+
+#1.自定义action:需要在actions里添加 名字

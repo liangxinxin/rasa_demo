@@ -122,6 +122,37 @@ nlu:
       - 帮我查一下[感冒](disease)的症状
       - [糖尿病](disease)的典型症状
       - [高血压](disease)的典型症状
+      - [心脏病](disease)的表征
+      - [中耳炎](disease)的表现
+      - [中风](disease)的症候
+
+  - intent: cause
+    examples: |
+      - [糖尿病](disease)的病因
+      - 查一下[糖尿病](disease)的原因
+      - [糖尿病](disease)的成因
+      - 为啥会得[糖尿病](disease)
+      - 怎么会得[糖尿病](disease)
+      - 怎么会导致[糖尿病](disease)
+      - 如何会造成[糖尿病](disease)
+      - [糖尿病](disease)的典型症状
+      - 怎样才得[高血压](disease)
+
+  - intent: check
+    examples: |
+      - [糖尿病](disease)的检查
+      - [糖尿病](disease)的检查项目
+      - [中风](disease)怎么能查出来
+      - [高血压](disease)怎么能测出来
+
+  - intent: cure
+    examples: |
+      - [糖尿病](disease)的怎么治疗
+      - [糖尿病](disease)的如何医治
+      - 怎么医治[中风](disease)
+      - [高血压](disease)治疗方式
+      - [高血压](disease)怎么办
+      - [中风](disease)怎么可以治
 
   - intent: complication
     examples: |
@@ -198,3 +229,24 @@ nlu:
       - [下星期日](date_time)[马来西亚](city)的天气会很热吗
       - [北京](city)[今天](date_time)的天气
       - [锦州](city)
+  - intent: query_knowledge_base
+    examples: |
+      - 推荐一些 [餐厅]{"entity": "object_type", "value": "restaurant"}?
+      - 你能推荐什么[餐厅]{"entity": "object_type", "value": "restaurant"}
+      - 你能说一些[餐厅]{"entity": "object_type", "value": "restaurant"} 吗?
+      - 你能给一些[餐厅]{"entity": "object_type", "value": "restaurant"} 的选择吗
+      - 列出来 [北京菜](cuisine) [餐厅]{"entity": "object_type", "value": "restaurant"}
+      - 你知道哪些[云南菜](cuisine) [餐厅]{"entity": "object_type", "value": "restaurant"}?
+      - 你知道[那个](mention)的[价位]吗{"entity": "attribute", "value": "price-range"}?
+      - [它](mention)是哪个[菜系](attribute)的?
+      - [最后一个](mention)是什么[菜系](attribute) {"entity": "mention", "value": "LAST"} has?
+      - [第一个]{"entity": "mention", "value": "1"}有[露天座位]{"entity": "attribute", "value": "outside-seating"}吗?
+      - [局气](restaurant)的[价位]{"entity": "attribute", "value": "price-range"}?
+      - [海底捞]怎么样(restaurant)?
+      - 你能告诉我[那个餐厅](mention)的[价位](attribute)吗?
+      - [他们](mention)有什么[菜系](attribute)?
+  # 同义词处理
+  - synonym: credit
+    examples: |
+      - credit card account
+      - credit account
