@@ -17,6 +17,7 @@ intents:
   - cure
   - cause
   - check
+  - query_knowledge_base
 
 entities:
   - city
@@ -92,7 +93,6 @@ actions: #命名规则，最好以action_开头。
   - action_kbqa_submit_drug
   - action_kbqa_submit_check
   - action_kbqa_submit_cause
-
   - action_kbqa_submit_complication
   - action_query_knowledge_base
 

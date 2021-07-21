@@ -233,18 +233,18 @@ nlu:
     examples: |
       - 推荐一些 [餐厅]{"entity": "object_type", "value": "restaurant"}?
       - 你能推荐什么[餐厅]{"entity": "object_type", "value": "restaurant"}
-#      - 你能说一些[餐厅]{"entity": "object_type", "value": "restaurant"} 吗?
-#      - 你能给一些[餐厅]{"entity": "object_type", "value": "restaurant"} 的选择吗
-#      - 列出来 [北京菜](cuisine) [餐厅]{"entity": "object_type", "value": "restaurant"}
-#      - 你知道哪些[云南菜](cuisine) [餐厅]{"entity": "object_type", "value": "restaurant"}?
-#      - 你知道[那个](mention)的[价位]{"entity": "attribute", "value": "price-range"}吗?
-#      - [它](mention)是哪个[菜系](attribute)的?
-#      - [最后一个]{"entity": "mention", "value": "LAST"}是什么[菜系](attribute)?
-#      - [第一个]{"entity": "mention", "value": "1"}有[露天座位]{"entity": "attribute", "value": "outside-seating"}吗?
-#      - [局气](restaurant)的[价位]{"entity": "attribute", "value": "price-range"}?
-#      - [海底捞](restaurant)怎么样?
-#      - 你能告诉我[那个餐厅](mention)的[价位](attribute)吗?
-#      - [他们](mention)有什么[菜系](attribute)?
+      - 你能说一些[餐厅]{"entity": "object_type", "value": "restaurant"}吗?
+      - 你能给一些[餐厅]{"entity": "object_type", "value": "restaurant"}的选择吗
+      - 列出来[北京菜](cuisine)[餐厅]{"entity": "object_type", "value": "restaurant"}
+      - 你知道哪些[云南菜](cuisine)[餐厅]{"entity": "object_type", "value": "restaurant"}?
+      - 你知道[那个](mention)的[价位]{"entity": "attribute", "value": "price-range"}吗?
+      - [它](mention)是哪个[菜系](attribute)的?
+      - [最后一个]{"entity": "mention", "value": "LAST"}是什么[菜系](attribute)?
+      - [第一个]{"entity": "mention", "value": "1"}有[露天座位]{"entity": "attribute", "value": "outside-seating"}吗?
+      - [局气](restaurant)的[价位]{"entity": "attribute", "value": "price-range"}?
+      - [海底捞](restaurant)怎么样?
+      - 你能告诉我[那个餐厅](mention)的[价位](attribute)吗?
+      - [他们](mention)有什么[菜系](attribute)?
   # 同义词处理
   - synonym: credit
     examples: |
